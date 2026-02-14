@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "node ./start.js"
+  },
+  "devDependencies": {
+    "basic-ftp": "^5.1.0",
+    "chokidar": "^5.0.0",
+    "dotenv": "^17.3.1"
+  }
+}

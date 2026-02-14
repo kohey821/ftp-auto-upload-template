@@ -1,0 +1,8 @@
+*
+!.env.example
+!.gitignore
+!README.md
+!package.json
+!pnpm-lock.yaml
+!start.js
+
