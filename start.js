@@ -1,36 +1,46 @@
 import { watch } from 'chokidar'
 import { Client } from 'basic-ftp'
 import { resolve, relative } from 'path'
-import dotenv from 'dotenv'
+import { readFileSync } from 'fs'
 
-dotenv.config()
-
+const file = readFileSync('./settings.json')
+const settings = JSON.parse(file)
 const {
-  LOCAL_ROOT,
-  REMOTE_ROOT,
-  FTP_HOST,
-  FTP_USER,
-  FTP_PASSWORD,
-} = process.env
+  localRoot,
+  remoteRoot,
+  host,
+  user,
+  password,
+  secure,
+  ignorePatterns,
+} = settings;
 
 /**
   * @type {string} path
   */
 async function upload(path) {
+  const relativePath = relative(localRoot, path)
+
+  const ignorePatternMatched = ignorePatterns.some((i) => {
+    return new RegExp(i).test(relativePath)
+  });
+  if (ignorePatternMatched) {
+    return;
+  }
+
   const client = new Client()
 
   client.ftp.verbose = true
 
   try {
     await client.access({
-      host: FTP_HOST,
-      user: FTP_USER,
-      password: FTP_PASSWORD,
-      secure: false,
+      host,
+      user,
+      password,
+      secure,
     })
 
-    const relativePath = relative(LOCAL_ROOT, path)
-    const remotePath = `${REMOTE_ROOT}/${relativePath}`
+    const remotePath = `${remoteRoot}/${relativePath}`
     await client.uploadFrom(path, remotePath)
   } catch (err) {
     console.log(err)
@@ -39,6 +49,6 @@ async function upload(path) {
   client.close()
 }
 
-watch(resolve(import.meta.dirname, LOCAL_ROOT))
+watch(resolve(import.meta.dirname, localRoot))
   .on('change', (path) => { upload(path) })
 

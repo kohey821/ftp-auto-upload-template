@@ -1,0 +1,12 @@
+{
+  "localRoot": "path/to/local/root",
+  "remoteRoot": "path/to/remote/root",
+  "host": "XXX.XXX.XXX.XXX",
+  "user": "user",
+  "password": "password",
+  "secure": false,
+  "ignorePatterns": [
+    ".git/",
+    "node_modules/"
+  ]
+}
