@@ -14,7 +14,7 @@ pnpm i
 cp settings.example.json settings.json
 ```
 
-を実行して `.env` を編集する。
+を実行して `settings.json` を編集する。
 
 ## Start
 
