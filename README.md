@@ -11,7 +11,7 @@ pnpm i
 を実行する。
 
 ```sh
-cp .env.example .env
+cp settings.example.json settings.json
 ```
 
 を実行して `.env` を編集する。

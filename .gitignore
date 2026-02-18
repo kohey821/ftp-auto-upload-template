@@ -1,8 +1,8 @@
 *
-!.env.example
 !.gitignore
-!README.md
 !package.json
 !pnpm-lock.yaml
+!README.md
+!settings.example.json
 !start.js
 
