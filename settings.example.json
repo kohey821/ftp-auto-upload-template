@@ -6,7 +6,7 @@
   "password": "password",
   "secure": false,
   "ignorePatterns": [
-    ".git/",
+    "\\.git/",
     "node_modules/"
   ]
 }
