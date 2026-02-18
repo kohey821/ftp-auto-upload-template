@@ -1,5 +1,7 @@
 # FTP Auto Upload Template
 
+古の環境と戦う。
+
 ## Setup
 
 この Directory に Project を配置する。
